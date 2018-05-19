@@ -1,6 +1,6 @@
 {
   "name": "boxrec-mocks",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "a repo for Boxrec mocks that can be used for testing",
   "main": "index.js",
   "scripts": {
@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/boxing/boxrec-mocks/issues"
   },
-  "homepage": "https://github.com/boxing/boxrec-mocks#readme"
+  "homepage": "https://github.com/boxing/boxrec-mocks#readme",
+  "devDependencies": {
+    "request": "^2.86.0",
+    "request-promise": "^4.2.2"
+  }
 }
