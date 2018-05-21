@@ -23,7 +23,7 @@ async function getRatings(cookieJar, qs = {}) {
     }
 
     return rp.get({
-        uri: "http://boxrec.com/en/champions",
+        uri: "http://boxrec.com/en/ratings",
         jar: cookieJar,
         qs,
     });
