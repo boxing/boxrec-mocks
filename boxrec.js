@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave} = require("./helpers");
+const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getSearchAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -58,4 +58,9 @@ const events = {
         status: "a", // active
     }, "mockRatings.html");
     await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPage.html");
+    await getSearchAndSave(cookieJar, {
+        first_name: "floyd",
+        last_name: "mayweather",
+        role: "boxer",
+    }, "mockSearchMayweather.html")
 })();
