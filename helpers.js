@@ -50,6 +50,20 @@ async function getEvent(cookieJar, eventId) {
     });
 }
 
+async function getLocation(cookieJar, qs = {}) {
+
+    for (let i in qs) {
+        qs[`l[${i}]`] = qs[i];
+        delete qs[i];
+    }
+
+    return rp.get({
+        uri: "http://boxrec.com/en/locations/people",
+        jar: cookieJar,
+        qs,
+    });
+}
+
 async function getBoxerAndSave(cookieJar, boxrecBoxerId, filename = "test.log", callback = () => {
 }) {
     const response = await getBoxerById(cookieJar, boxrecBoxerId);
@@ -80,12 +94,18 @@ async function getSearchAndSave(cookieJar, qs, filename = "test.log", callback =
     fs.writeFile(`./pages/search/${filename}`, response, callback);
 }
 
+async function getLocationAndSave(cookieJar, qs, filename = "test.log", callback = () => {
+}) {
+    const response = await getLocation(cookieJar, qs);
+    fs.writeFile(`./pages/location/${filename}`, response, callback);
+}
+
 
 module.exports = {
-    getBoxerById,
     getBoxerAndSave,
     getChampionsAndSave,
     getRatingsAndSave,
     getEventAndSave,
+    getLocationAndSave,
     getSearchAndSave,
 };
