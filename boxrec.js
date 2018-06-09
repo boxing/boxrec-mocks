@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getSearchAndSave} = require("./helpers");
+const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getLocationAndSave, getSearchAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -52,15 +52,32 @@ const events = {
 
     await getBoxerAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileRJJ.html");
     await getBoxerAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileGGG.html");
+
     await getChampionsAndSave(cookieJar);
+
     await getRatingsAndSave(cookieJar, {
         division: "welterweight",
         status: "a", // active
     }, "mockRatings.html");
+
     await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPage.html");
+
     await getSearchAndSave(cookieJar, {
         first_name: "floyd",
         last_name: "mayweather",
         role: "boxer",
-    }, "mockSearchMayweather.html")
+    }, "mockSearchMayweather.html");
+
+    await getLocationAndSave(cookieJar, {
+        country: "USA",
+        role: "boxer",
+    }, "mockUSALocation.html");
+    await getLocationAndSave(cookieJar, {
+        role: "matchmaker",
+    }, "mockMatchmaker.html");
+    await getLocationAndSave(cookieJar, {
+        country: "USA",
+        role: "boxer",
+        division: "welterweight",
+    }, "mockUSAWelterweight.html");
 })();
