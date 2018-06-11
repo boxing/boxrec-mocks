@@ -69,14 +69,14 @@ const events = {
     }, "mockSearchMayweather.html");
 
     await getLocationAndSave(cookieJar, {
-        country: "USA",
+        country: "US",
         role: "boxer",
     }, "mockUSALocation.html");
     await getLocationAndSave(cookieJar, {
         role: "matchmaker",
     }, "mockMatchmaker.html");
     await getLocationAndSave(cookieJar, {
-        country: "USA",
+        country: "US",
         role: "boxer",
         division: "welterweight",
     }, "mockUSAWelterweight.html");
