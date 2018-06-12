@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getLocationAndSave, getSearchAndSave} = require("./helpers");
+const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -68,16 +68,21 @@ const events = {
         role: "boxer",
     }, "mockSearchMayweather.html");
 
-    await getLocationAndSave(cookieJar, {
+    await getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         role: "boxer",
     }, "mockUSALocation.html");
-    await getLocationAndSave(cookieJar, {
+    await getPeopleByLocationAndSave(cookieJar, {
         role: "matchmaker",
     }, "mockMatchmaker.html");
-    await getLocationAndSave(cookieJar, {
+    await getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         role: "boxer",
         division: "welterweight",
     }, "mockUSAWelterweight.html");
+    await getEventsByLocationAndSave(cookieJar, {
+        country: "UK",
+        region: "LON",
+        year: "2017",
+    }, "mockEventsLondon2017.html")
 })();
