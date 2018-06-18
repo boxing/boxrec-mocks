@@ -76,6 +76,26 @@ async function getEventsByLocation(cookieJar, qs = {}) {
     });
 }
 
+async function getSchedule(cookieJar, qs = {}) {
+    for (let i in qs) {
+        qs[`c[${i}]`] = qs[i];
+        delete qs[i];
+    }
+
+    return rp.get({
+        uri: "http://boxrec.com/en/schedule",
+        jar: cookieJar,
+        qs,
+    });
+}
+
+async function getVenue(cookieJar, qs = {}) {
+    return rp.get({
+        uri: `http://boxrec.com/en/venue/${qs.id}`,
+        jar: cookieJar,
+    });
+}
+
 async function getBoxerAndSave(cookieJar, boxrecBoxerId, filename = "test.log", callback = () => {
 }) {
     const response = await getBoxerById(cookieJar, boxrecBoxerId);
@@ -118,6 +138,18 @@ async function getEventsByLocationAndSave(cookieJar, qs, filename = "test.log", 
     fs.writeFile(`./pages/location/${filename}`, response, callback);
 }
 
+async function getScheduleAndSave(cookieJar, qs, filename = "test.log", callback = () => {
+}) {
+    const response = await getSchedule(cookieJar, qs);
+    fs.writeFile(`./pages/schedule/${filename}`, response, callback);
+}
+
+async function getVenueAndSave(cookieJar, qs, filename = "test.log", callback = () => {
+}) {
+    const response = await getVenue(cookieJar, qs);
+    fs.writeFile(`./pages/venue/${filename}`, response, callback);
+}
+
 module.exports = {
     getBoxerAndSave,
     getChampionsAndSave,
@@ -126,4 +158,6 @@ module.exports = {
     getEventAndSave,
     getPeopleByLocationAndSave,
     getSearchAndSave,
+    getScheduleAndSave,
+    getVenueAndSave,
 };

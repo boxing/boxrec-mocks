@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave} = require("./helpers");
+const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -84,5 +84,9 @@ const events = {
         country: "UK",
         region: "LON",
         year: "2017",
-    }, "mockEventsLondon2017.html")
+    }, "mockEventsLondon2017.html");
+    await getScheduleAndSave(cookieJar, {}, "mockScheduleWorldwide.html");
+    await getVenueAndSave(cookieJar, {
+        id: 38555
+    }, "mockVenueMGMGrand.html");
 })();
