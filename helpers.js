@@ -96,6 +96,13 @@ async function getVenue(cookieJar, qs = {}) {
     });
 }
 
+async function getBeltInformation(cookieJar, belt = null) {
+    return rp.get({
+        uri: `http://boxrec.com/en/title/${belt}`,
+        jar: cookieJar,
+    });
+}
+
 async function getBoxerAndSave(cookieJar, boxrecBoxerId, filename = "test.log", callback = () => {
 }) {
     const response = await getBoxerById(cookieJar, boxrecBoxerId);
@@ -150,6 +157,12 @@ async function getVenueAndSave(cookieJar, qs, filename = "test.log", callback = 
     fs.writeFile(`./pages/venue/${filename}`, response, callback);
 }
 
+async function getBeltInformationAndSave(cookieJar, belt, filename = "test.log", callback = () => {
+}) {
+    const response = await getBeltInformation(cookieJar, belt);
+    fs.writeFile(`./pages/title/${filename}`, response, callback);
+}
+
 module.exports = {
     getBoxerAndSave,
     getChampionsAndSave,
@@ -160,4 +173,5 @@ module.exports = {
     getSearchAndSave,
     getScheduleAndSave,
     getVenueAndSave,
+    getBeltInformationAndSave,
 };

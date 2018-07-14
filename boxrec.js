@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave} = require("./helpers");
+const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -29,7 +29,6 @@ const events = {
         resolveWithFullResponse: true,
     }).then(data => data.headers["set-cookie"]);
 
-
     const cookie = rp.cookie(rawCookies[0]); // create the cookie
     cookieJar.setCookie(cookie, "http://boxrec.com", () => {
     });
@@ -52,22 +51,17 @@ const events = {
 
     await getBoxerAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileRJJ.html");
     await getBoxerAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileGGG.html");
-
     await getChampionsAndSave(cookieJar);
-
     await getRatingsAndSave(cookieJar, {
         division: "welterweight",
         status: "a", // active
     }, "mockRatings.html");
-
     await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPage.html");
-
     await getSearchAndSave(cookieJar, {
         first_name: "floyd",
         last_name: "mayweather",
         role: "boxer",
     }, "mockSearchMayweather.html");
-
     await getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         role: "boxer",
@@ -89,4 +83,5 @@ const events = {
     await getVenueAndSave(cookieJar, {
         id: 38555
     }, "mockVenueMGMGrand.html");
+    await getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html")
 })();
