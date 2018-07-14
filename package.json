@@ -1,6 +1,6 @@
 {
   "name": "boxrec-mocks",
-  "version": "0.5.1",
+  "version": "0.6.0",
   "description": "a repo for BoxRec mocks that can be used for testing",
   "main": "index.js",
   "scripts": {
