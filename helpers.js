@@ -1,9 +1,14 @@
 const rp = require("request-promise");
 const fs = require("fs");
 
-async function getBoxerById(cookieJar, boxrecBoxerId) {
+// note: this is garbage in that the `BOXREC_USERNAME` better have toggleRatings=y otherwise it screws everything up
+// so if it doesn't, use the browser to show the ratings and then run this
+async function getPersonById(cookieJar, boxrecGlobalId, role = "boxer") {
+
+    let queryString = "";
+
     return rp.get({
-        uri: `http://boxrec.com/en/boxer/${boxrecBoxerId}`,
+        uri: `http://boxrec.com/en/${role}/${boxrecGlobalId}${queryString}`,
         jar: cookieJar,
     });
 }
@@ -103,9 +108,9 @@ async function getBeltInformation(cookieJar, belt = null) {
     });
 }
 
-async function getBoxerAndSave(cookieJar, boxrecBoxerId, filename = "test.log", callback = () => {
+async function getPersonAndSave(cookieJar, boxrecBoxerId, filename = "test.log", role = "boxer", callback = () => {
 }) {
-    const response = await getBoxerById(cookieJar, boxrecBoxerId);
+    const response = await getPersonById(cookieJar, boxrecBoxerId, role);
     fs.writeFile(`./pages/profile/${filename}`, response, callback);
 }
 
@@ -164,7 +169,7 @@ async function getBeltInformationAndSave(cookieJar, belt, filename = "test.log",
 }
 
 module.exports = {
-    getBoxerAndSave,
+    getPersonAndSave,
     getChampionsAndSave,
     getRatingsAndSave,
     getEventsByLocationAndSave,

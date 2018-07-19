@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getBoxerAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave} = require("./helpers");
+const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -16,8 +16,40 @@ const boxers = {
     GennadyGolovkin: 356831,
 };
 
+const judges = {
+    DaveMoretti: 401002,
+};
+
+const doctor = {
+    AnthonyRuggeroli: 412676,
+};
+
 const events = {
     BellewHaye2: 761332,
+};
+
+const promoter = {
+    LeonardEllerbe: 419406,
+};
+
+const referee = {
+    RobertByrd: 400886,
+};
+
+const inspector = {
+    MichaelBuchato: 775611,
+};
+
+const manager = {
+    MichaelMcSorleyJr: 785510,
+};
+
+const matchmaker = {
+    VeliPekkaMaeki: 709331,
+};
+
+const supervisor = {
+    SammyMacias: 406714,
 };
 
 (async () => {
@@ -49,8 +81,16 @@ const events = {
 
     await rp.post(options);
 
-    await getBoxerAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileRJJ.html");
-    await getBoxerAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileGGG.html");
+    await getPersonAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileBoxerRJJ.html");
+    await getPersonAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileBoxerGGG.html");
+    await getPersonAndSave(cookieJar, judges.DaveMoretti, "mockProfileJudgeDaveMoretti.html", "judge");
+    await getPersonAndSave(cookieJar, doctor.AnthonyRuggeroli, "mockProfileDoctorAnthonyRuggeroli.html", "doctor");
+    await getPersonAndSave(cookieJar, promoter.LeonardEllerbe, "mockProfilePromoterLeonardEllerbe.html", "promoter");
+    await getPersonAndSave(cookieJar, referee.RobertByrd, "mockProfileRefereeRobertByrd.html", "referee");
+    await getPersonAndSave(cookieJar, inspector.MichaelBuchato, "mockProfileInspectorMichaelBuchato.html", "inspector");
+    await getPersonAndSave(cookieJar, manager.MichaelMcSorleyJr, "mockProfileManagerMichaelMcSorleyJr.html", "manager");
+    await getPersonAndSave(cookieJar, matchmaker.VeliPekkaMaeki, "mockProfileMatchmakerVeliPekkaMaeki.html", "matchmaker");
+    await getPersonAndSave(cookieJar, supervisor.SammyMacias, "mockProfileSupervisorSammyMacias.html", "supervisor");
     await getChampionsAndSave(cookieJar);
     await getRatingsAndSave(cookieJar, {
         division: "welterweight",
