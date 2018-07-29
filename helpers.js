@@ -21,7 +21,6 @@ async function getChampions(cookieJar) {
 }
 
 async function getRatings(cookieJar, qs = {}) {
-
     for (let i in qs) {
         qs[`r[${i}]`] = qs[i];
         delete qs[i];
@@ -35,7 +34,6 @@ async function getRatings(cookieJar, qs = {}) {
 }
 
 async function getSearch(cookieJar, qs = {}) {
-
     for (let i in qs) {
         qs[`pf[${i}]`] = qs[i];
         delete qs[i];
@@ -108,6 +106,27 @@ async function getBeltInformation(cookieJar, belt = null) {
     });
 }
 
+async function getResults(cookieJar, qs) {
+    // http://boxrec.com/en/results?c%5BcountryCode%5D=&c%5Bdivision%5D=Middleweight&c_go=
+    for (let i in qs) {
+        qs[`c[${i}]`] = qs[i];
+        delete qs[i];
+    }
+
+    return rp.get({
+        uri: "http://boxrec.com/en/results",
+        jar: cookieJar,
+        qs,
+    })
+}
+
+async function getBout(cookieJar, url) {
+    return rp.get({
+        uri: `http://boxrec.com/en/event/${url}`,
+        jar: cookieJar,
+    });
+}
+
 async function getPersonAndSave(cookieJar, boxrecBoxerId, filename = "test.log", role = "boxer", callback = () => {
 }) {
     const response = await getPersonById(cookieJar, boxrecBoxerId, role);
@@ -168,6 +187,18 @@ async function getBeltInformationAndSave(cookieJar, belt, filename = "test.log",
     fs.writeFile(`./pages/title/${filename}`, response, callback);
 }
 
+async function getResultsAndSave(cookieJar, qs, filename = "test.log", callback = () => {
+}) {
+    const response = await getResults(cookieJar, qs);
+    fs.writeFile(`./pages/results/${filename}`, response, callback);
+}
+
+async function getBoutAndSave(cookieJar, url, filename = "test.log", callback = () => {
+}) {
+    const response = await getBout(cookieJar, url);
+    fs.writeFile(`./pages/events/bout/${filename}`, response, callback);
+}
+
 module.exports = {
     getPersonAndSave,
     getChampionsAndSave,
@@ -179,4 +210,6 @@ module.exports = {
     getScheduleAndSave,
     getVenueAndSave,
     getBeltInformationAndSave,
+    getResultsAndSave,
+    getBoutAndSave
 };
