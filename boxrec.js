@@ -1,5 +1,5 @@
 const rp = require("request-promise");
-const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave} = require("./helpers");
+const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 
@@ -25,6 +25,7 @@ const doctor = {
 };
 
 const events = {
+    MayweatherMcGregor: 752960,
     BellewHaye2: 761332,
 };
 
@@ -96,7 +97,8 @@ const supervisor = {
         division: "welterweight",
         status: "a", // active
     }, "mockRatings.html");
-    await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPage.html");
+    await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPageBellewHaye2.html");
+    await getEventAndSave(cookieJar, events.MayweatherMcGregor, "mockEventPageMayweatherMcGregor.html");
     await getSearchAndSave(cookieJar, {
         first_name: "floyd",
         last_name: "mayweather",
@@ -123,5 +125,10 @@ const supervisor = {
     await getVenueAndSave(cookieJar, {
         id: 38555
     }, "mockVenueMGMGrand.html");
-    await getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html")
+    await getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html");
+    await getResultsAndSave(cookieJar, {
+        country: "US",
+        division: "middleweight",
+    }, "mockResultsUSMiddleweight.html");
+    await getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
 })();
