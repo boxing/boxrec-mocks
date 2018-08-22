@@ -1,7 +1,6 @@
 const rp = require("request-promise");
-const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave} = require("./helpers");
+const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
-
 
 if (!BOXREC_USERNAME) {
     throw new Error("missing required env var BOXREC_USERNAME");
@@ -131,4 +130,5 @@ const supervisor = {
         division: "middleweight",
     }, "mockResultsUSMiddleweight.html");
     await getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
+    await getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
 })();

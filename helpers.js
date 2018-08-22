@@ -107,7 +107,6 @@ async function getBeltInformation(cookieJar, belt = null) {
 }
 
 async function getResults(cookieJar, qs) {
-    // http://boxrec.com/en/results?c%5BcountryCode%5D=&c%5Bdivision%5D=Middleweight&c_go=
     for (let i in qs) {
         qs[`c[${i}]`] = qs[i];
         delete qs[i];
@@ -117,6 +116,13 @@ async function getResults(cookieJar, qs) {
         uri: "http://boxrec.com/en/results",
         jar: cookieJar,
         qs,
+    })
+}
+
+async function getDate(cookieJar, date) {
+    return rp.get({
+        uri: `http://boxrec.com/en/date?date=${date}`,
+        jar: cookieJar,
     })
 }
 
@@ -199,6 +205,12 @@ async function getBoutAndSave(cookieJar, url, filename = "test.log", callback = 
     fs.writeFile(`./pages/events/bout/${filename}`, response, callback);
 }
 
+async function getDateAndSave(cookieJar, dateString, filename = "test.log", callback = () => {
+}) {
+    const response = await getDate(cookieJar, dateString);
+    fs.writeFile(`./pages/date/${filename}`, response, callback);
+}
+
 module.exports = {
     getPersonAndSave,
     getChampionsAndSave,
@@ -211,5 +223,6 @@ module.exports = {
     getVenueAndSave,
     getBeltInformationAndSave,
     getResultsAndSave,
-    getBoutAndSave
+    getBoutAndSave,
+    getDateAndSave,
 };
