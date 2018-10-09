@@ -35,7 +35,7 @@ async function getRatings(cookieJar, qs = {}) {
 
 async function getSearch(cookieJar, qs = {}) {
     for (let i in qs) {
-        qs[`pf[${i}]`] = qs[i];
+        qs[`ktO[${i}]`] = qs[i];
         delete qs[i];
     }
 
