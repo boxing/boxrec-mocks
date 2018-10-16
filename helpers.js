@@ -33,9 +33,28 @@ async function getRatings(cookieJar, qs = {}) {
     });
 }
 
+// grabs the dynamic search param from the search page
+async function getSearchParam(cookieJar) {
+    return rp.get({
+        jar: cookieJar,
+        uri: "http://boxrec.com/en/search",
+    }).then(body => {
+
+        const matches = body.match(/\sname\=\"([\w]+)\"\smethod\=\"get\"\saction\=\"\/en\/search/);
+
+        if (matches.length) {
+            return matches[1];
+        } else {
+            throw new Error("Could not find search param where 'Find People' box is");
+        }
+    })
+}
+
 async function getSearch(cookieJar, qs = {}) {
+    const searchParam = await getSearchParam(cookieJar);
+
     for (let i in qs) {
-        qs[`ktO[${i}]`] = qs[i];
+        qs[`${searchParam}[${i}]`] = qs[i];
         delete qs[i];
     }
 
