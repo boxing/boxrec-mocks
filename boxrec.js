@@ -131,4 +131,7 @@ const supervisor = {
     }, "mockResultsUSMiddleweight.html");
     await getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
     await getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
+
+    // event page where venue and region/town is missing
+    await getEventAndSave(cookieJar, 775798, "mockEventPageNoVenueNoRegionTown.html");
 })();
