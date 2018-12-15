@@ -1,4 +1,4 @@
-const rp = require("request-promise");
+const BoxrecRequests = require("boxrec-requests").default;
 const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
@@ -53,33 +53,7 @@ const supervisor = {
 };
 
 (async () => {
-
-    const cookieJar = rp.jar();
-
-    const rawCookies = await rp.get({
-        uri: "http://boxrec.com",
-        resolveWithFullResponse: true,
-    }).then(data => data.headers["set-cookie"]);
-
-    const cookie = rp.cookie(rawCookies[0]); // create the cookie
-    cookieJar.setCookie(cookie, "http://boxrec.com", () => {
-    });
-
-    const options = {
-        uri: "http://boxrec.com/en/login", // boxrec does not support HTTPS
-        followAllRedirects: true, // 302 redirect occurs
-        resolveWithFullResponse: true,
-        formData: {
-            "_username": BOXREC_USERNAME,
-            "_password": BOXREC_PASSWORD,
-            "_remember_me": "on",
-            "_target_path": "http://boxrec.com", // not required
-            "login[go]": "", // not required
-        },
-        jar: cookieJar,
-    };
-
-    await rp.post(options);
+    const cookieJar = await BoxrecRequests.login(BOXREC_USERNAME, BOXREC_PASSWORD);
 
     await getPersonAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileBoxerRJJ.html");
     await getPersonAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileBoxerGGG.html");
@@ -121,9 +95,7 @@ const supervisor = {
         year: "2017",
     }, "mockEventsLondon2017.html");
     await getScheduleAndSave(cookieJar, {}, "mockScheduleWorldwide.html");
-    await getVenueAndSave(cookieJar, {
-        id: 38555
-    }, "mockVenueMGMGrand.html");
+    await getVenueAndSave(cookieJar, 38555, "mockVenueMGMGrand.html");
     await getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html");
     await getResultsAndSave(cookieJar, {
         country: "US",
@@ -131,6 +103,7 @@ const supervisor = {
     }, "mockResultsUSMiddleweight.html");
     await getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
     await getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
+    await getDateAndSave(cookieJar, "2010-12-01", "mockDate2018-12-01.html");
 
     // event page where venue and region/town is missing
     await getEventAndSave(cookieJar, 775798, "mockEventPageNoVenueNoRegionTown.html");
