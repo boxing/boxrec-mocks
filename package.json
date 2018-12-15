@@ -1,10 +1,10 @@
 {
   "name": "boxrec-mocks",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "a repo for BoxRec mocks that can be used for testing/development",
   "main": "index.js",
   "scripts": {
-    "prepublish": "npm run start",
+    "prepublish": "npm run build",
     "build": "node ./src/boxrec.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,7 +12,6 @@
     "type": "git",
     "url": "git+https://github.com/boxing/boxrec-mocks.git"
   },
-  "private": true,
   "keywords": [
     "boxrec",
     "mocks"
@@ -25,7 +24,9 @@
   "homepage": "https://github.com/boxing/boxrec-mocks#readme",
   "devDependencies": {
     "boxrec-requests": "^2.0.1",
-    "request": "^2.88.0",
     "shelljs": "^0.8.3"
+  },
+  "dependencies": {
+    "request": "^2.88.0"
   }
 }
