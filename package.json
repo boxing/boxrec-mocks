@@ -1,8 +1,8 @@
 {
   "name": "boxrec-mocks",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "description": "a repo for BoxRec mocks that can be used for testing/development",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "prepublish": "npm run build",
     "build": "node ./src/boxrec.js",
@@ -24,6 +24,7 @@
   "homepage": "https://github.com/boxing/boxrec-mocks#readme",
   "devDependencies": {
     "boxrec-requests": "^2.0.1",
+    "cheerio": "^1.0.0-rc.2",
     "shelljs": "^0.8.3"
   },
   "dependencies": {
