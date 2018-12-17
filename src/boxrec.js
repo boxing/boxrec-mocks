@@ -1,5 +1,5 @@
-const BoxrecRequests = require("boxrec-requests").default;
-const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave} = require("./helpers");
+const {BoxrecRequests} = require("boxrec-requests");
+const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave, getTitlesAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 if (!BOXREC_USERNAME) {
@@ -67,7 +67,10 @@ const supervisor = {
     await getPersonAndSave(cookieJar, supervisor.SammyMacias, "mockProfileSupervisorSammyMacias.html", "supervisor");
     await getChampionsAndSave(cookieJar);
     await getRatingsAndSave(cookieJar, {
-        division: "welterweight",
+        country: "",
+        division: "Welterweight",
+        sex: "M",
+        stance: "",
         status: "a", // active
     }, "mockRatings.html");
     await getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPageBellewHaye2.html");
@@ -87,7 +90,7 @@ const supervisor = {
     await getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         role: "boxer",
-        division: "welterweight",
+        division: "Welterweight",
     }, "mockUSAWelterweight.html");
     await getEventsByLocationAndSave(cookieJar, {
         country: "UK",
@@ -98,13 +101,27 @@ const supervisor = {
     await getVenueAndSave(cookieJar, 38555, "mockVenueMGMGrand.html");
     await getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html");
     await getResultsAndSave(cookieJar, {
-        country: "US",
-        division: "middleweight",
+        countryCode: "US",
+        division: "Middleweight", // capitalized
     }, "mockResultsUSMiddleweight.html");
     await getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
     await getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
-    await getDateAndSave(cookieJar, "2010-12-01", "mockDate2018-12-01.html");
+    await getDateAndSave(cookieJar, "2018-12-01", "mockDate2018-12-01.html");
 
     // event page where venue and region/town is missing
     await getEventAndSave(cookieJar, 775798, "mockEventPageNoVenueNoRegionTown.html");
+
+    await getTitlesAndSave(cookieJar, {
+        bout_title: 72,
+        division: "Super Middleweight",
+    }, "mockTitlesTitleSelectedSuperMiddleweight.html"); // 12 columns
+    await getTitlesAndSave(cookieJar, {
+        bout_title: 75, // is the same format column number if you "all titles"
+        division: "schedule", // 8 columns
+    }, "mockTitlesTitleSelectedAllScheduled.html");
+    await getTitlesAndSave(cookieJar, {
+        bout_title: null,
+        division: "schedule", // 8 columns
+    }, "mockTitlesAllTitleAllScheduled.html");
+
 })();

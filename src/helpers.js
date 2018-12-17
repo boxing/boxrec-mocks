@@ -1,5 +1,5 @@
 const fs = require("fs");
-const BoxrecRequests = require("boxrec-requests").default;
+const {BoxrecRequests} = require("boxrec-requests");
 const shell = require("shelljs");
 
 async function getPersonAndSave(cookieJar, boxrecBoxerId, filename = "test.log", role = "boxer", callback = () => {
@@ -58,8 +58,14 @@ async function getVenueAndSave(cookieJar, qs, filename = "test.log", callback = 
 
 async function getBeltInformationAndSave(cookieJar, belt, filename = "test.log", callback = () => {
 }) {
-    const response = await BoxrecRequests.getTitles(cookieJar, belt);
+    const response = await BoxrecRequests.getTitleById(cookieJar, belt);
     writeTo(`./dist/pages/title/`, filename, response, callback);
+}
+
+async function getTitlesAndSave(cookieJar, qs, filename = "test.log", callback = () => {
+}) {
+    const response = await BoxrecRequests.getTitles(cookieJar, qs);
+    writeTo(`./dist/pages/titles/`, filename, response, callback);
 }
 
 async function getResultsAndSave(cookieJar, qs, filename = "test.log", callback = () => {
@@ -101,4 +107,5 @@ module.exports = {
     getResultsAndSave,
     getBoutAndSave,
     getDateAndSave,
+    getTitlesAndSave,
 };
