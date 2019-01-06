@@ -7,8 +7,8 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.15.tgz#20e85651b62fd86656e57c9c9bc771ab1570bc59"
 
 ajv@^6.5.5:
-  version "6.6.1"
-  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.1.tgz#6360f5ed0d80f232cc2b294c362d5dc2e538dd61"
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/ajv/-/ajv-6.6.2.tgz#caceccf474bf3fc3ce3b147443711a24063cc30d"
   dependencies:
     fast-deep-equal "^2.0.1"
     fast-json-stable-stringify "^2.0.0"
@@ -55,9 +55,9 @@ boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
-boxrec-requests@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/boxrec-requests/-/boxrec-requests-2.0.1.tgz#ec77be204f261d42763a77d042bf227a278ef1dc"
+boxrec-requests@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/boxrec-requests/-/boxrec-requests-3.0.0.tgz#a66d790f22273c4fdd1b53d4d33e7079b00a4f3e"
   dependencies:
     cheerio "^1.0.0-rc.2"
     request-promise "^4.2.2"

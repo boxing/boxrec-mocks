@@ -1,6 +1,6 @@
 {
   "name": "boxrec-mocks",
-  "version": "0.9.2",
+  "version": "1.0.0",
   "description": "a repo for BoxRec mocks that can be used for testing/development",
   "main": "./dist/index.js",
   "scripts": {
@@ -16,18 +16,16 @@
     "boxrec",
     "mocks"
   ],
-  "author": "Mike DiDomizio <mikedidomizio@gmail.com> (http://mikedidomizio.com)",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/boxing/boxrec-mocks/issues"
   },
   "homepage": "https://github.com/boxing/boxrec-mocks#readme",
   "devDependencies": {
-    "boxrec-requests": "^2.0.1",
+    "boxrec-requests": "4.0.0",
     "cheerio": "^1.0.0-rc.2",
+    "request": "^2.88.0",
     "shelljs": "^0.8.3"
   },
-  "dependencies": {
-    "request": "^2.88.0"
-  }
+  "dependencies": {}
 }
