@@ -1,5 +1,5 @@
 const {BoxrecRequests} = require("boxrec-requests");
-const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave, getTitlesAndSave} = require("./helpers");
+const {getPersonAndSave, getChampionsAndSave, getRatingsAndSave, getEventAndSave, getPeopleByLocationAndSave, getSearchAndSave, getEventsByLocationAndSave, getScheduleAndSave, getVenueAndSave, getBeltInformationAndSave, getResultsAndSave, getBoutAndSave, getDateAndSave, getTitlesAndSave, getWatchAndSave} = require("./helpers");
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
 if (!BOXREC_USERNAME) {
@@ -123,5 +123,5 @@ const supervisor = {
         bout_title: null,
         division: "schedule", // 8 columns
     }, "mockTitlesAllTitleAllScheduled.html");
-
+    await getWatchAndSave(cookieJar, 618866, "mockWatchHeatherHardy.html");
 })();

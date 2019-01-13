@@ -86,6 +86,12 @@ async function getDateAndSave(cookieJar, dateString, filename = "test.log", call
     writeTo(`./dist/pages/date/`, filename, response, callback);
 }
 
+async function getWatchAndSave(cookieJar, boxerGlobalId, filename = "test.log", callback = () => {
+}) {
+    const response = await BoxrecRequests.watch(cookieJar, boxerGlobalId);
+    writeTo(`./dist/pages/watch/`, filename, response, callback);
+}
+
 const writeTo = (fullPath, fileName, response, callback) => {
     console.log("try to create directory structure:", fullPath);
     shell.mkdir('-p', fullPath);
@@ -108,4 +114,5 @@ module.exports = {
     getBoutAndSave,
     getDateAndSave,
     getTitlesAndSave,
+    getWatchAndSave,
 };
