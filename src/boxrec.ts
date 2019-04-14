@@ -15,6 +15,7 @@ if (!BOXREC_PASSWORD) {
 const boxers: any = {
     GennadyGolovkin: 356831,
     RoyJonesJr: 774820,
+    FloydMayweatherJr: 352,
 };
 
 const judges: any = {
@@ -59,6 +60,7 @@ const supervisor: any = {
 
     await helperFunctions.getPersonAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileBoxerRJJ.html");
     await helperFunctions.getPersonAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileBoxerGGG.html");
+    await helperFunctions.getPersonAndSave(cookieJar, boxers.FloydMayweatherJr, "mockProfileBoxerFloydMayweatherJr.html");
     await helperFunctions.getPersonAndSave(cookieJar, judges.DaveMoretti, "mockProfileJudgeDaveMoretti.html", "judge");
     await helperFunctions.getPersonAndSave(cookieJar, doctor.AnthonyRuggeroli, "mockProfileDoctorAnthonyRuggeroli.html", "doctor");
     await helperFunctions.getPersonAndSave(cookieJar, promoter.LeonardEllerbe, "mockProfilePromoterLeonardEllerbe.html", "promoter");
@@ -82,6 +84,7 @@ const supervisor: any = {
         last_name: "mayweather",
         role: "boxer",
     }, "mockSearchMayweather.html");
+
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         role: "boxer",
@@ -89,6 +92,7 @@ const supervisor: any = {
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
         role: "matchmaker",
     }, "mockMatchmaker.html");
+
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
         country: "US",
         division: "welterweight",

@@ -10,6 +10,7 @@ import {mockEventsLondon2017, mockMatchmaker, mockUSALocation, mockUSAWelterweig
 import {
     mockProfileBoxerGGG,
     mockProfileBoxerRJJ,
+    mockProfileBoxerFloydMayweatherJr,
     mockProfileDoctorAnthonyRuggeroli,
     mockProfileInspectorMichaelBuchato,
     mockProfileJudgeDaveMoretti,
@@ -43,6 +44,7 @@ export {
     mockMiddleweightWBCBelt,
     mockProfileBoxerGGG,
     mockProfileBoxerRJJ,
+    mockProfileBoxerFloydMayweatherJr,
     mockProfileDoctorAnthonyRuggeroli,
     mockProfileJudgeDaveMoretti,
     mockProfileManagerMichaelMcSorleyJr,
