@@ -112,7 +112,7 @@ const supervisor: any = {
     }, "mockResultsUSMiddleweight.html");
     await helperFunctions.getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
     await helperFunctions.getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
-    await helperFunctions.getDateAndSave(cookieJar, "2010-12-01", "mockDate2018-12-01.html");
+    await helperFunctions.getDateAndSave(cookieJar, "2019-11-16", "mockDate2019-11-16.html");
 
     // event page where venue and region/town is missing
     await helperFunctions.getEventAndSave(cookieJar, 775798, "mockEventPageNoVenueNoRegionTown.html");

@@ -1,5 +1,5 @@
 import {mockChampions} from "./pages/champions";
-import {mockDate20100520, mockDate20181201} from "./pages/date";
+import {mockDate20100520, mockDate20191116} from "./pages/date";
 import {
     mockBoutCaneloGGG1,
     mockEventPageBellewHaye2,
@@ -37,7 +37,7 @@ export {
     mockBoutCaneloGGG1,
     mockChampions,
     mockDate20100520,
-    mockDate20181201,
+    mockDate20191116,
     mockEventPageBellewHaye2,
     mockEventsLondon2017,
     mockMatchmaker,
