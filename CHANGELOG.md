@@ -1,3 +1,9 @@
+## 2.2.0 (2019-05-07)
+
+### Added
+
+- Mock date event added that has a "tickets" row
+
 ## 2.1.0 (2019-04-13)
 
 ### Added
