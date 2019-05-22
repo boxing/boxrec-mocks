@@ -77,6 +77,13 @@ const supervisor: any = {
         stance: "",
         status: "a", // active
     }, "mockRatings.html");
+    await helperFunctions.getRatingsAndSave(cookieJar, {
+        country: "",
+        division: "Welterweight",
+        sex: "M",
+        stance: "",
+        status: "", // active and inactive
+    }, "mockActiveAndInactiveRatings.html");
     await helperFunctions.getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPageBellewHaye2.html");
     await helperFunctions.getEventAndSave(cookieJar, events.MayweatherMcGregor, "mockEventPageMayweatherMcGregor.html");
     await helperFunctions.getSearchAndSave(cookieJar, {
