@@ -1,3 +1,9 @@
+## 2.3.0 (2019-05-21)
+
+### Added
+
+- Add mock for ratings active/inactive
+
 ## 2.2.0 (2019-05-07)
 
 ### Added
