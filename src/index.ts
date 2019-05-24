@@ -8,9 +8,9 @@ import {
 } from "./pages/events";
 import {mockEventsLondon2017, mockMatchmaker, mockUSALocation, mockUSAWelterweight} from "./pages/location";
 import {
+    mockProfileBoxerFloydMayweatherJr,
     mockProfileBoxerGGG,
     mockProfileBoxerRJJ,
-    mockProfileBoxerFloydMayweatherJr,
     mockProfileDoctorAnthonyRuggeroli,
     mockProfileInspectorMichaelBuchato,
     mockProfileJudgeDaveMoretti,
@@ -20,7 +20,12 @@ import {
     mockProfileRefereeRobertByrd,
     mockProfileSupervisorSammyMacias,
 } from "./pages/profile";
-import {mockRatings} from "./pages/ratings";
+import {
+    mockActiveAndInactiveNoDivisionRatings,
+    mockActiveAndInactiveRatings,
+    mockNoDivisionRatings,
+    mockRatings
+} from "./pages/ratings";
 import {mockResultsUSMiddleweight} from "./pages/results";
 import {mockScheduleWorldwide} from "./pages/schedule";
 import {mockSearchMayweather} from "./pages/search";
@@ -55,6 +60,9 @@ export {
     mockEventPageNoVenueNoRegionTown,
     mockProfileRefereeRobertByrd,
     mockProfileSupervisorSammyMacias,
+    mockActiveAndInactiveNoDivisionRatings,
+    mockActiveAndInactiveRatings,
+    mockNoDivisionRatings,
     mockRatings,
     mockResultsUSMiddleweight,
     mockScheduleWorldwide,
