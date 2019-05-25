@@ -124,4 +124,4 @@ typings/
 
 dist/
 # these files are copied to dist/ no need to commit
-src/pages/*/*.html
+src/pages/**/*.html
