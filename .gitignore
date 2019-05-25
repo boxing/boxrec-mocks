@@ -123,6 +123,5 @@ typings/
 # End of https://www.gitignore.io/api/node,jetbrains+all
 
 dist/
-# these files are copied to dist/
-src/pages/*
-!src/pages/*/index.ts
+# these files are copied to dist/ no need to commit
+src/pages/*/*.html

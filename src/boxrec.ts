@@ -75,15 +75,29 @@ const supervisor: any = {
         division: "Welterweight",
         sex: "M",
         stance: "",
-        status: "a", // active
+        status: "a", // active (division)
     }, "mockRatings.html");
     await helperFunctions.getRatingsAndSave(cookieJar, {
         country: "",
         division: "Welterweight",
         sex: "M",
         stance: "",
-        status: "", // active and inactive
+        status: "", // active and inactive (division)
     }, "mockActiveAndInactiveRatings.html");
+    await helperFunctions.getRatingsAndSave(cookieJar, {
+        country: "",
+        division: "",
+        sex: "M",
+        stance: "",
+        status: "a", // active (no division)
+    }, "mockNoDivisionRatings.html");
+    await helperFunctions.getRatingsAndSave(cookieJar, {
+        country: "",
+        division: "",
+        sex: "M",
+        stance: "",
+        status: "", // active and inactive (no division)
+    }, "mockActiveAndInactiveNoDivisionRatings.html");
     await helperFunctions.getEventAndSave(cookieJar, events.BellewHaye2, "mockEventPageBellewHaye2.html");
     await helperFunctions.getEventAndSave(cookieJar, events.MayweatherMcGregor, "mockEventPageMayweatherMcGregor.html");
     await helperFunctions.getSearchAndSave(cookieJar, {

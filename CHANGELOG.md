@@ -1,3 +1,14 @@
+## 2.4.0 (2019-05-24)
+
+### Added
+
+- Add mock for ratings (no division) active
+- Add mock for ratings (no division) active/inactive
+
+### Fixed
+
+- Properly export ratings active/inactive
+
 ## 2.3.0 (2019-05-21)
 
 ### Added
