@@ -1,3 +1,13 @@
+## 3.0.0 (2019-08-12)
+
+### Added
+
+- Support for new BoxRec roles
+
+### Fixed
+
+- 
+
 ## 2.4.0 (2019-05-24)
 
 ### Added

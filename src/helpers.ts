@@ -1,10 +1,11 @@
-import {BoxrecRequests} from "boxrec-requests";
 import * as fs from "fs";
 import {CookieJar} from "request";
 import * as shell from "shelljs";
+import {BoxrecRole} from "boxrec-requests/dist/boxrec-requests.constants";
+import {BoxrecRequests} from "boxrec-requests";
 
 async function
-getPersonAndSave(cookieJar: CookieJar, boxrecBoxerId: number, filename = "test.log", role: any = "boxer", callback =
+getPersonAndSave(cookieJar: CookieJar, boxrecBoxerId: number, filename = "test.log", role: BoxrecRole, callback =
     () => {/**/
     }): Promise<void> {
     const response: string = await BoxrecRequests.getPersonById(cookieJar, boxrecBoxerId, role);

@@ -1,6 +1,12 @@
-import {BoxrecRequests} from "boxrec-requests";
-import {CookieJar} from "request";
 import * as helperFunctions from "./helpers";
+import {CookieJar} from "request";
+import {BoxrecRequests} from "boxrec-requests";
+import {
+    BoxrecRole,
+    Country,
+    WeightDivision,
+    WeightDivisionCapitalized
+} from "boxrec-requests/dist/boxrec-requests.constants";
 
 const {BOXREC_USERNAME, BOXREC_PASSWORD} = process.env;
 
@@ -58,28 +64,28 @@ const supervisor: any = {
 (async () => {
     const cookieJar: CookieJar = await BoxrecRequests.login(BOXREC_USERNAME, BOXREC_PASSWORD);
 
-    await helperFunctions.getPersonAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileBoxerRJJ.html");
-    await helperFunctions.getPersonAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileBoxerGGG.html");
-    await helperFunctions.getPersonAndSave(cookieJar, boxers.FloydMayweatherJr, "mockProfileBoxerFloydMayweatherJr.html");
-    await helperFunctions.getPersonAndSave(cookieJar, judges.DaveMoretti, "mockProfileJudgeDaveMoretti.html", "judge");
-    await helperFunctions.getPersonAndSave(cookieJar, doctor.AnthonyRuggeroli, "mockProfileDoctorAnthonyRuggeroli.html", "doctor");
-    await helperFunctions.getPersonAndSave(cookieJar, promoter.LeonardEllerbe, "mockProfilePromoterLeonardEllerbe.html", "promoter");
-    await helperFunctions.getPersonAndSave(cookieJar, referee.RobertByrd, "mockProfileRefereeRobertByrd.html", "referee");
-    await helperFunctions.getPersonAndSave(cookieJar, inspector.MichaelBuchato, "mockProfileInspectorMichaelBuchato.html", "inspector");
-    await helperFunctions.getPersonAndSave(cookieJar, manager.MichaelMcSorleyJr, "mockProfileManagerMichaelMcSorleyJr.html", "manager");
-    await helperFunctions.getPersonAndSave(cookieJar, matchmaker.VeliPekkaMaeki, "mockProfileMatchmakerVeliPekkaMaeki.html", "matchmaker");
-    await helperFunctions.getPersonAndSave(cookieJar, supervisor.SammyMacias, "mockProfileSupervisorSammyMacias.html", "supervisor");
+    await helperFunctions.getPersonAndSave(cookieJar, boxers.RoyJonesJr, "mockProfileBoxerRJJ.html", BoxrecRole.proBoxer);
+    await helperFunctions.getPersonAndSave(cookieJar, boxers.GennadyGolovkin, "mockProfileBoxerGGG.html", BoxrecRole.proBoxer);
+    await helperFunctions.getPersonAndSave(cookieJar, boxers.FloydMayweatherJr, "mockProfileBoxerFloydMayweatherJr.html", BoxrecRole.proBoxer);
+    await helperFunctions.getPersonAndSave(cookieJar, judges.DaveMoretti, "mockProfileJudgeDaveMoretti.html", BoxrecRole.judge);
+    await helperFunctions.getPersonAndSave(cookieJar, doctor.AnthonyRuggeroli, "mockProfileDoctorAnthonyRuggeroli.html", BoxrecRole.doctor);
+    await helperFunctions.getPersonAndSave(cookieJar, promoter.LeonardEllerbe, "mockProfilePromoterLeonardEllerbe.html", BoxrecRole.promoter);
+    await helperFunctions.getPersonAndSave(cookieJar, referee.RobertByrd, "mockProfileRefereeRobertByrd.html", BoxrecRole.referee);
+    await helperFunctions.getPersonAndSave(cookieJar, inspector.MichaelBuchato, "mockProfileInspectorMichaelBuchato.html", BoxrecRole.inspector);
+    await helperFunctions.getPersonAndSave(cookieJar, manager.MichaelMcSorleyJr, "mockProfileManagerMichaelMcSorleyJr.html", BoxrecRole.manager);
+    await helperFunctions.getPersonAndSave(cookieJar, matchmaker.VeliPekkaMaeki, "mockProfileMatchmakerVeliPekkaMaeki.html", BoxrecRole.matchmaker);
+    await helperFunctions.getPersonAndSave(cookieJar, supervisor.SammyMacias, "mockProfileSupervisorSammyMacias.html", BoxrecRole.supervisor);
     await helperFunctions.getChampionsAndSave(cookieJar);
     await helperFunctions.getRatingsAndSave(cookieJar, {
         country: "",
-        division: "Welterweight",
+        division: WeightDivisionCapitalized.welterweight,
         sex: "M",
         stance: "",
         status: "a", // active (division)
     }, "mockRatings.html");
     await helperFunctions.getRatingsAndSave(cookieJar, {
         country: "",
-        division: "Welterweight",
+        division: WeightDivisionCapitalized.welterweight,
         sex: "M",
         stance: "",
         status: "", // active and inactive (division)
@@ -103,24 +109,24 @@ const supervisor: any = {
     await helperFunctions.getSearchAndSave(cookieJar, {
         first_name: "floyd",
         last_name: "mayweather",
-        role: "boxer",
+        role: BoxrecRole.proBoxer,
     }, "mockSearchMayweather.html");
 
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
-        country: "US",
-        role: "boxer",
+        country: Country.USA,
+        role: BoxrecRole.proBoxer,
     }, "mockUSALocation.html");
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
-        role: "matchmaker",
+        role: BoxrecRole.matchmaker,
     }, "mockMatchmaker.html");
 
     await helperFunctions.getPeopleByLocationAndSave(cookieJar, {
-        country: "US",
-        division: "welterweight",
-        role: "boxer",
+        country: Country.USA,
+        division: WeightDivision.welterweight,
+        role: BoxrecRole.proBoxer,
     }, "mockUSAWelterweight.html");
     await helperFunctions.getEventsByLocationAndSave(cookieJar, {
-        country: "UK",
+        country: Country["United Kingdom"],
         region: "LON",
         year: "2017",
     }, "mockEventsLondon2017.html");
@@ -128,8 +134,8 @@ const supervisor: any = {
     await helperFunctions.getVenueAndSave(cookieJar, 38555, "mockVenueMGMGrand.html");
     await helperFunctions.getBeltInformationAndSave(cookieJar, "6/Middleweight", "mockMiddleweightWBCbelt.html");
     await helperFunctions.getResultsAndSave(cookieJar, {
-        country: "US",
-        division: "middleweight",
+        country: Country.USA,
+        division: WeightDivision.middleweight,
     }, "mockResultsUSMiddleweight.html");
     await helperFunctions.getBoutAndSave(cookieJar, "751017/2160855", "mockBoutCaneloGGG1.html");
     await helperFunctions.getDateAndSave(cookieJar, "2010-05-20", "mockDate2010-05-20.html");
@@ -140,7 +146,7 @@ const supervisor: any = {
 
     await helperFunctions.getTitlesAndSave(cookieJar, {
         bout_title: 72,
-        division: "Super Middleweight",
+        division: WeightDivisionCapitalized.superMiddleweight,
     }, "mockTitlesTitleSelectedSuperMiddleweight.html"); // 12 columns
     await helperFunctions.getTitlesAndSave(cookieJar, {
         bout_title: 75, // is the same format column number if you "all titles"

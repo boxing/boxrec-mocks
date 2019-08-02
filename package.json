@@ -1,6 +1,6 @@
 {
   "name": "boxrec-mocks",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "a repo for BoxRec mocks that can be used for testing/development",
   "main": "./dist/index",
   "typings": "./dist/index",
@@ -28,7 +28,7 @@
     "@types/request": "^2.48.1",
     "@types/shelljs": "^0.8.1",
     "@types/webpack-env": "^1.13.6",
-    "boxrec-requests": "4.2.0",
+    "boxrec-requests": "^5.0.1",
     "cheerio": "^1.0.0-rc.2",
     "copy-webpack-plugin": "^4.6.0",
     "request": "^2.88.0",
