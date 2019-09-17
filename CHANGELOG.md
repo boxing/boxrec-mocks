@@ -1,12 +1,14 @@
+## 3.0.1 (2019-09-16)
+
+### Fixed
+
+- Update Mocks
+
 ## 3.0.0 (2019-08-12)
 
 ### Added
 
 - Support for new BoxRec roles
-
-### Fixed
-
-- 
 
 ## 2.4.0 (2019-05-24)
 
@@ -36,7 +38,6 @@
 ### Added
 
 - Mock profile for Floyd Mayweather Jr. (#352) because he has an opponent with a 0-1 record
-
 
 ## 2.0.0 (2019-01-18)
 
