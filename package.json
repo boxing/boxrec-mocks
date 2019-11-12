@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/boxing/boxrec-mocks#readme",
   "devDependencies": {
-    "@types/request": "^2.48.1",
+    "@types/request": "^2.47.0",
     "@types/shelljs": "^0.8.1",
     "@types/webpack-env": "^1.13.6",
     "boxrec-requests": "^5.0.1",
