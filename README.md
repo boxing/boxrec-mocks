@@ -2,6 +2,11 @@
 
 Makes request to [BoxRec](boxrec.com) and saves the pages as HTML files.  To be used for testing purposes.
 
+## ❌ Deprecated/Archived ❌
+
+This repository has been deprecated and stopped used in favour of using what's live to the public.
+
+
 ## Installation
 
 `yarn add boxrec-mocks -D`
